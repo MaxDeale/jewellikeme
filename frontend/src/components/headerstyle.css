@@ -1,0 +1,35 @@
+.authlink {
+  padding: 2rem !important;
+  font-size: 1.2rem;
+  transition: all 1s;
+}
+
+.logo {
+  transition: all 1s;
+}
+
+.logo:hover {
+  transform: translateX(-12px);
+  color: rgb(107, 103, 103) !important;
+}
+
+.logo i {
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+}
+
+.logo i:hover {
+  color: rgb(209, 209, 36);
+}
+
+.authlink:hover {
+  color: white !important;
+}
+
+.authlink i {
+  padding: 1rem;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+}
+
+.authlink i:hover {
+  color: rgb(209, 209, 36) !important;
+}
