@@ -32,6 +32,9 @@ const ShopCartScreen = ({ match, location, history }) => {
   const checkOutHandler = () => {
     history.push("/login?redirect=shipping");
   };
+  const removeFromCartHandler = (id) => {
+    dispatch(removeFromCart(id));
+  };
   return (
     <>
       <Row>
@@ -71,7 +74,11 @@ const ShopCartScreen = ({ match, location, history }) => {
                       </Form.Control>
                     </Col>
                     <Col md={2}>
-                      <Button type="button" variant="light">
+                      <Button
+                        onClick={() => removeFromCartHandler(item.product)}
+                        type="button"
+                        variant="light"
+                      >
                         <i className="fas fa-trash"></i>{" "}
                       </Button>
                     </Col>
