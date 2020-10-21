@@ -20,7 +20,7 @@ export const listProducts = () => async (dispatch) => {
       type: PRODUCT_LIST_FAIL,
       payload:
         //dispatching custom error message if it exists otherwise just a regular error message
-        error.response && error.response.data.message
+            error.response && error.response.data.message
           ? error.respose.data.message
           : error.message,
     });

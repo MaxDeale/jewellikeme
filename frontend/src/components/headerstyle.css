@@ -19,6 +19,7 @@
 
 .logo i:hover {
   color: rgb(209, 209, 36);
+  transform: scale(1.2);
 }
 
 .authlink:hover {
@@ -32,4 +33,9 @@
 
 .authlink i:hover {
   color: rgb(209, 209, 36) !important;
+  transform: scale(1.2);
+}
+
+#username {
+  width: 150px;
 }
