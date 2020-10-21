@@ -14,6 +14,7 @@ import {
 import Rating from "../components/Rating";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import "./productscreen.css";
 
 const ProductScreen = ({ match, history }) => {
   const dispatch = useDispatch();

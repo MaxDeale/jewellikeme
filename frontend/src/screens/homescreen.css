@@ -1,0 +1,39 @@
+:root {
+  --gray: #7a8288;
+  --gray-dark: #3a3f44;
+  --primary: #3a3f44;
+  --secondary: #7a8288;
+  --success: #62c462;
+  --info: #5bc0de;
+  --warning: #f89406;
+  --danger: #ee5f5b;
+  --light: #e9ecef;
+}
+
+#latest-products {
+  height: 360px;
+  background-color: var(--light);
+  color: var(--gray-dark);
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+#latest-products div {
+  width: 100%;
+  height: 95%;
+
+  background-image: url("../img/leafFrame2.png");
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#latest-products h1 {
+  font-size: 1.9rem;
+}

@@ -5,6 +5,7 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import Product from "../components/Product";
 import { listProducts } from "../actions/productActions";
+import "./homescreen.css";
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,12 @@ const HomeScreen = () => {
 
   return (
     <>
-      <h1>Latest Products</h1>
+      <div id="latest-products">
+        <div>
+          <h1>Latest Products</h1>
+        </div>
+      </div>
+
       {loading ? (
         <Loader />
       ) : error ? (

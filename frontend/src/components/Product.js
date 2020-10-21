@@ -1,13 +1,23 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { leafFrame } from "../img/leafframe.png";
 import Rating from "../components/Rating";
+import "./productstyle.css";
 
 const Product = ({ product }) => {
   return (
-    <Card className="my-3 p-3 rounded">
+    <Card className="my-3 p-3 rounded product-item">
       <Link to={`/product/${product._id}`}>
-        <Card.Img style={{ height: "220px" }} src={product.image} />
+        <div className="img-container">
+          <Card.Img
+            style={{
+              height: "100%",
+              width: "100%",
+            }}
+            src={product.image}
+          />
+        </div>
       </Link>
 
       <Card.Body>

@@ -1,0 +1,11 @@
+.img-container {
+  width: 220px;
+  height: 220px;
+}
+
+@media (max-width: 600px) {
+  .img-container {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
