@@ -4,7 +4,6 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../components/FormContainer";
 import Message from "../components/Message";
-import axios from "axios";
 import Loader from "../components/Loader";
 import { login, register } from "../actions/userActions";
 
