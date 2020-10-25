@@ -3,6 +3,7 @@ import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
+import axios from "axios";
 import Message from "../components/Message";
 import { getOrderDetails } from "../actions/orderActions";
 
@@ -14,9 +15,29 @@ const OrderScreen = ({ match }) => {
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
 
+  if (!loading) {
+    //calculation of order item price
+    const addDecimals = (num) => {
+      return Math.round((num * 100) / 100).toFixed(2);
+    };
+
+    order.itemsPrice = addDecimals(
+      order.orderItems.reduce((acc, item) => acc + item.price * item.qty, 0)
+    );
+  }
+
   useEffect(() => {
-    dispatch(getOrderDetails(orderId));
-  }, []);
+    const addPayPalScript = async () => {
+      const { data: clientId } = await axios.get("/api/config/paypal");
+
+      console.log(clientId);
+    };
+
+    addPayPalScript();
+    if (!order || order._id !== orderId) {
+      dispatch(getOrderDetails(orderId));
+    }
+  }, [dispatch, order, orderId]);
 
   return loading ? (
     <Loader />
@@ -32,17 +53,49 @@ const OrderScreen = ({ match }) => {
             <ListGroup.Item>
               <h2>Shipping</h2>
               <p>
+                {" "}
+                <strong>Name: </strong>
+                {order.user.name}
+              </p>
+
+              <p>
+                <strong>Email: </strong>
+                <a href={`mailto:${order.user.email}`}>{order.user.email}</a>
+              </p>
+
+              <p>
                 <strong>Address:</strong>
                 {order.shippingAddress.address}, {order.shippingAddress.city}{" "}
                 {order.shippingAddress.postalCode},{" "}
                 {order.shippingAddress.country}
+                {order.isDelivered ? (
+                  <Message variant="success">
+                    Order successfully paid at: {order.deliverdAt}{" "}
+                  </Message>
+                ) : (
+                  <Message variant="danger">
+                    Order has not been delivered yet...
+                  </Message>
+                )}
               </p>
             </ListGroup.Item>
 
             <ListGroup.Item>
               <h2>Payment Method</h2>
-              <strong>Method: </strong>
-              {order.paymentMethod}
+              <p>
+                <strong>Method: </strong>
+                {order.paymentMethod}
+              </p>
+
+              {order.isPaid ? (
+                <Message variant="success">
+                  Order successfully paid at: {order.paidAt}{" "}
+                </Message>
+              ) : (
+                <Message variant="danger">
+                  Order has not been paid for yet...
+                </Message>
+              )}
             </ListGroup.Item>
 
             <ListGroup.Item>
